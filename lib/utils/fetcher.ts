@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const updateOptions = () => {
-  if (typeof window === "undefined") return {};
+  if (typeof window === 'undefined') return {};
 
   if (!window.localStorage.user) return {};
 
@@ -12,12 +12,12 @@ const updateOptions = () => {
   if (!!user.token) {
     return {
       headers: {
-        Authorization: `Token ${user.token}`,
-      },
+        Authorization: `Token ${user.token}`
+      }
     };
   }
 };
-export default async function (url) {
+export default async function fetcher(url) {
   const { data } = await axios.get(url, updateOptions());
   return data;
 }
